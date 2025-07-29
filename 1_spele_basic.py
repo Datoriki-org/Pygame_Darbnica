@@ -71,9 +71,9 @@ for y, row in enumerate(level):
 # Draw cikls
 def draw():
     screen.clear()
-    screen.fill((135, 206, 235))  # Background krāsa
+    screen.fill((135, 206, 235))  # Background krāsa (R, G, B)
     for plat in platforms:
-        screen.draw.filled_rect(plat, (100, 100, 100)) # Platformu krāsa
+        screen.draw.filled_rect(plat, (100, 100, 100)) # Platformu krāsa (R, G, B)
     # TODO: Zīmēt monētas
     
     player.draw() #Zīmē spēlētāju
