@@ -7,15 +7,15 @@
 # 1) Bloks 2: Monētu saraksts
 coins = []
 
-# 2) Bloks 2, kartes parsing cilpa:
+# 2) Bloks 2, pievieno speles kartes izveidei monetas:
 if tile == 'c':
-    coins.append(Actor('Monētas-Atēls', (sx + tile_width()/2, sy + tile_height()/2)))
+    coins.append(Actor('Monētas-Atēla-Nosaukums', (sx + tile_width()/2, sy + tile_height()/2)))
 
 # 3) Bloks 3 (funkcija draw):
 for c in coins:
     c.draw()
 
-# 4) Bloks 4 (funkcija update), pēc fizikas aprēķiniem:
+# 4) Bloks 4 (funkcija update), pēc gravitācijas aprēķiniem:
 for c in coins:
     if player.colliderect(c):
         coins.remove(c)
@@ -39,7 +39,7 @@ if score >= TARGET_SCORE:
 # 4) Bloks 3 (funkcija draw): ziņojumu attēlošana
 if win:
     screen.draw.text("Tu uzvari!", center=(WIDTH/2, HEIGHT/2), fontsize=60)
-if lose:
+elif lose:
     screen.draw.text("Spēle beigusies", center=(WIDTH/2, HEIGHT/2), fontsize=60)
 
 
@@ -50,7 +50,7 @@ max_jumps = 2         # Cik lēcienus var izpildīt kopā (2 = dubultlēciens)
 jumps_made = 0        # Cik lēcieni jau veikti kopš pēdējās saskares ar zemi
 
 # 2) Bloks 4b (funkcija vertical_collision_helper), kad spēlētājs pieskaras platformai:
-jumps_made = 0        # Atiestata lēcienu skaitītāju, jo spēlētājs atkal uz zemes
+jumps_made = 0        # Ja spēlētājs pieskaras platformai vertikāli (zem viņa platforma), viņa lēcienu skaits ir 0 (jo ir uz zemes)
 
 # 3) Bloks 5 (funkcija on_key_down): lēciena loģika ar ierobežojumu
 if key == keys.SPACE or key == keys.UP:
