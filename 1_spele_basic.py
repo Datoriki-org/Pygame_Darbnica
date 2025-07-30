@@ -2,31 +2,31 @@
 # Bloks 1
 ##############
 
-# Spēles ekrāna izmērs pikseļos
+# Speles ekrana izmers pikselos
 WIDTH = 640
 HEIGHT = 480
 
-# Kartes iestatījumi
+# Kartes iestatijumi
 TILE_COLUMNS = 20
 TILE_ROWS = 15
 
-# Spēlētājs
+# Speletajs
 player = Actor('alien')
-player.pos = (100, 100) # Sākuma pozīcija
+player.pos = (100, 100) # Sakuma pozicija
 
 # Fizikas variables
-vy = 0 # Vertikālais ātrums
-dx = 0 # Horizontālais ātrums
+vy = 0 # Vertikalais atrums
+dx = 0 # Horizontalais atrums
 on_ground = False
 
-# TODO: Pieliec iespēju glabāt punktus
-# TODO: Pievieno nepieciešamos mainīgos priekš double jump 
+# TODO: Pieliec iespeju glabat punktus
+# TODO: Pievieno nepieciesamos mainigos prieks double jump 
 
 ##############
 # Bloks 2
 ##############
 
-# Spēles karte
+# Speles karte
 level = [
     "....................",
     "....................",
@@ -46,23 +46,23 @@ level = [
 ]
 
 platforms = [] # Platformu list
-# TODO: Pievieno monētu list
+# TODO: Pievieno monetu list
 
-# Palīgfunkcijas
+# Paligfunkcijas
 def tile_width():
     return WIDTH / TILE_COLUMNS
 
 def tile_height():
     return HEIGHT / TILE_ROWS
 
-# Izveido spēles karti
+# Izveido speles karti
 for y, row in enumerate(level):
     for x, tile in enumerate(row):
         sx = x * tile_width()
         sy = y * tile_height()
         if tile == '#':
             platforms.append(Rect((sx, sy), (tile_width(), tile_height())))
-        # TODO: Ja simbols sakrīt ar monētu, pievieno monētu
+        # TODO: Ja simbols sakrit ar monetu, pievieno monetu
 
 ##############
 # Bloks 3
@@ -71,12 +71,12 @@ for y, row in enumerate(level):
 # Draw cikls
 def draw():
     screen.clear()
-    screen.fill((135, 206, 235))  # Background krāsa (R, G, B)
+    screen.fill((135, 206, 235))  # Background krasa (R, G, B)
     for plat in platforms:
-        screen.draw.filled_rect(plat, (100, 100, 100)) # Platformu krāsa (R, G, B)
-    # TODO: Zīmēt monētas
+        screen.draw.filled_rect(plat, (100, 100, 100)) # Platformu krasa (R, G, B)
+    # TODO: Zimet monetas
     
-    player.draw() #Zīmē spēlētāju
+    player.draw() #Zime speletaju
 
 ##############
 # Bloks 4
@@ -86,7 +86,7 @@ def draw():
 def update():
     global vy, on_ground, score, dx
 
-    # Kustība pa labi/ kreisi
+    # Kustiba pa labi/ kreisi
     dx = 0
     if keyboard.left: dx = -3
     if keyboard.right: dx = 3
@@ -101,11 +101,11 @@ def update():
 
     vertical_collision_helper()
 
-    # TODO: Monētu vākšana
-    # TODO: Vieta kur pielikt iespēju spēli uzvarēt
-    # TODO: Vieta kur pielikt iespēju spēli zaudēt
+    # TODO: Monetu vaksana
+    # TODO: Vieta kur pielikt iespeju speli uzvaret
+    # TODO: Vieta kur pielikt iespeju speli zaudet
 
-# Palīgfunkcijas
+# Paligfunkcijas
 def horizontal_collision_helper():
     global dx
     for plat in platforms:
@@ -131,11 +131,11 @@ def vertical_collision_helper():
 # Bloks 5
 ##############
 
-# Lekšana, nospiesta poga event
+# Leksana, nospiesta poga event
 def on_key_down(key):
     global vy, on_ground
     if key == keys.SPACE:
-        if on_ground:
+        if  on_ground:
             vy = -15
             on_ground = False
         # TODO: Vieta kur pielikt Double Jump
