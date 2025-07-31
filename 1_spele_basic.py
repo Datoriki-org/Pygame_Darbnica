@@ -62,6 +62,8 @@ for y, row in enumerate(level):
         sy = y * tile_height()
         if tile == '#':
             platforms.append(Rect((sx, sy), (tile_width(), tile_height())))
+        if tile == 'c':
+            coins.append(Actor('Monētas-Atēla-Nosaukums', (sx + tile_width()/2, sy + tile_height()/2)))
         # TODO: Ja simbols sakrit ar monetu, pievieno monetu
 
 ##############
